@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>title</title>
+    <style>
+      body {
+        background-image: url("https://t4.ftcdn.net/jpg/02/06/31/87/360_F_206318738_N2gYNRTuRIzO32PHn1G54gggj3w2bIWo.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      div {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: yellow;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="circle"></div>
+    <script>
+      var start = new Date().getTime();
+      var move = () => {
+        console.log("message inside move");
+        var left = Math.floor(Math.random() * screen.width) + "px";
+        var top = Math.floor(Math.random() * 500) + "px";
+        var wh = Math.random() * 200 + 100 + "px";
+        console.log(left, top, wh);
+
+        var red = Math.random() * 256;
+        var green = Math.random() * 256;
+        var blue = Math.random() * 256;
+
+        document.getElementById("circle").style.left = left;
+        document.getElementById("circle").style.top = top;
+        document.getElementById("circle").style.width = wh;
+        document.getElementById("circle").style.height = wh;
+        document.getElementById("circle").style.display = "block";
+        document.getElementById(
+          "circle"
+        ).style.backgroundColor = `rgb( ${red} , ${blue} , ${green} )`;
+        start = new Date().getTime();
+      };
+      document.getElementById("circle").onclick = () => {
+        console.log("in side");
+        document.getElementById("circle").style.display = "none";
+        var end = new Date().getTime();
+        var time = (end - start) / 1000;
+        alert(time);
+        move();
+      };
+    </script>
+  </body>
+</html>
